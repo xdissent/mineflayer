@@ -19,8 +19,8 @@ module.exports = () => (bot, done) => {
 
     return [
       (cb) => {
-        bot.test.setInventorySlot(chestSlot, new Item(mcData.blocksByName['chest'].id, 3, 0), () => {
-          bot.test.setInventorySlot(trappedChestSlot, new Item(mcData.blocksByName['trapped_chest'].id, 3, 0), () => {
+        bot.test.setInventorySlot(chestSlot, new Item(mcData.findItemOrBlockByName('chest').id, 3, 0), () => {
+          bot.test.setInventorySlot(trappedChestSlot, new Item(mcData.findItemOrBlockByName('trapped_chest').id, 3, 0), () => {
             bot.test.setInventorySlot(boneSlot, new Item(mcData.itemsByName['bone'].id, 3, 0), cb)
           })
         })

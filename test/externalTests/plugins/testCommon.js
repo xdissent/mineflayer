@@ -33,7 +33,7 @@ function inject (bot) {
     new Block(mcData.blocksByName['bedrock'].id),
     new Block(mcData.blocksByName['dirt'].id),
     new Block(mcData.blocksByName['dirt'].id),
-    new Block(mcData.blocksByName['grass'].id)
+    new Block(mcData.blocksByName[bot.majorVersion === '1.13' ? 'grass_block' : 'grass'].id)
     // and then air
   ]
 
@@ -70,9 +70,8 @@ function inject (bot) {
     }
 
     function placeAndResume (position, item) {
-      setInventorySlot(36, Item(item.type, 1, 0), () => {
-        placeBlock(36, position)
-        resume()
+      setInventorySlot(36, new Item(item, 1, 0), () => {
+        placeBlock(36, position, resume)
       })
     }
 

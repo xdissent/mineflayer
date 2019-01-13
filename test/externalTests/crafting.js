@@ -45,11 +45,11 @@ module.exports = () => (bot, done) => {
 
   const craftTest = [
     (cb) => {
-      bot.test.setInventorySlot(36, new Item(mcData.blocksByName['log'].id, 1, 0), cb)
+      bot.test.setInventorySlot(36, new Item(mcData.findItemOrBlockByName(bot.majorVersion === '1.13' ? 'oak_log' : 'log').id, 1, 0), cb)
     },
     bot.test.becomeSurvival,
     (cb) => {
-      craft(1, 'planks', cb)
+      craft(1, bot.majorVersion === '1.13' ? 'oak_planks' : 'planks', cb)
     }
   ]
 
